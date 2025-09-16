@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>Our Products {{ products.length }}</h1>
+  <p *ngIf="!products.length">Loading products..</p>
+
+  <table *ngIf="products.length" class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.price | currency : "USD" }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
