@@ -29,13 +29,21 @@ public class ProductRepository : IProductRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task UpdateAsync(Product product)
+    public async Task<bool> UpdateAsync(Product product)
     {
-        throw new NotImplementedException();
+        _context.Products.Update(product);
+        return await _context.SaveChangesAsync() > 0;
     }
 
-    public Task DeleteAsync(int id)
+    public async Task<bool> DeleteAsync(int id)
     {
-        throw new NotImplementedException();
+        var product = await _context.Products.FindAsync(id);
+        if (product == null)
+        {
+            return false;
+        }
+
+        _context.Products.Remove(product);
+        return await _context.SaveChangesAsync() > 0;
     }
 }

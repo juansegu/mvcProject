@@ -40,19 +40,26 @@ public class ProductsController : ControllerBase
             new { id = newProduct.Id },
             newProduct);
     }
-    [HttpPut]
-    public ActionResult<Product> UpdateProduct(ProductDto productDto)
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateProduct(int id, ProductDto productDto)
     {
-        var product = _productsService.UpdateProduct(productDto);
-
-        return Ok(product);
+        var updatedProduct = await _productsService.UpdateProductAsync(id, productDto);
+        if (updatedProduct == null)
+        {
+            return NotFound(); // Returns 404 Not Found
+        }
+        return NoContent(); // Returns 204 No Content on successful update
     }
-    [HttpDelete("{id}")]
-    public ActionResult DeleteProduct(int id)
-    {
-        _productsService.DeleteProduct(id);
 
-        return Ok();
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteProduct(int id)
+    {
+        var success = await _productsService.DeleteProductAsync(id);
+        if (!success)
+        {
+            return NotFound(); // Returns 404 Not Found
+        }
+        return NoContent(); // Returns 204 No Content on successful delete
     }
 
 }

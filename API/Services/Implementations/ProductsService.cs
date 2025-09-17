@@ -34,29 +34,24 @@ public class ProductsService : IProductsService
         return newProduct;
     }
 
-    public Product UpdateProduct(ProductDto productDTO)
+    public async Task<Product?> UpdateProductAsync(int id, ProductDto productDto)
     {
-        /*var existingProduct = GetProductById(productDTO.Id ?? 0);
+        var existingProduct = await _productRepository.GetByIdAsync(id);
         if (existingProduct == null)
         {
-            throw new KeyNotFoundException("Product not found");
+            return null; // Not found
         }
 
-        existingProduct.Name = productDTO.Name;
-        existingProduct.Price = productDTO.Price;
-        return existingProduct;*/
-        return null;
+        // Update properties
+        existingProduct.Name = productDto.Name;
+        existingProduct.Price = productDto.Price;
+
+        await _productRepository.UpdateAsync(existingProduct);
+        return existingProduct;
     }
 
-    public void DeleteProduct(int id)
+    public async Task<bool> DeleteProductAsync(int id)
     {
-        /*var product = GetProductById(id);
-        if (product == null)
-        {
-            throw new KeyNotFoundException("Product not found");
-        }
-
-        _products.Remove(product);*/
-
+        return await _productRepository.DeleteAsync(id);
     }
 }
