@@ -9,13 +9,13 @@ brew install dotnet
 Move to Folder
 
 ```bash
-brew /API
+CD /API
 ```
 
 Run API
 
 ```bash
-brew dotnet run
+$ dotnet run
 ```
 
 # ClientUIapp
