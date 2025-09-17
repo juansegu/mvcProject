@@ -1,0 +1,10 @@
+.actions-header {
+  color: #0d6efd; // Bootstrap's primary blue
+  font-weight: bold;
+}
+
+tbody tr:hover {
+  background-color: #f8f9fa; // A light grey
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}

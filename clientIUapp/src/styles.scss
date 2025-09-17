@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+@use "bootstrap/scss/functions";
+
+@use "bootstrap/scss/bootstrap" with (
+  $primary: #663399,
+  // Change the primary color to a deep purple
+  $danger: #d9534f,
+  // A slightly different red for danger
+  $body-bg: #fafafa,
+  // A slightly off-white background
+  $border-radius: 0.5rem,
+  // Make corners more rounded
+  $enable-shadows: true
+);
+@use "bootstrap-icons/font/bootstrap-icons.css";
+
+// global styles here
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
