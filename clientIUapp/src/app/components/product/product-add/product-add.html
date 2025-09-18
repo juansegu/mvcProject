@@ -1,6 +1,6 @@
 <div class="container">
   <h1>{{ isEditMode ? "Edit Product" : "Add New Product" }}</h1>
-  <a routerLink="/product" class="btn btn-primary"
+  <a routerLink="/" class="btn btn-primary"
     ><i class="bi bi-arrow-left-square"></i>
   </a>
   <form [formGroup]="productForm" (ngSubmit)="onSubmit()">

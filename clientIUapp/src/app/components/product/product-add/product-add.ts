@@ -55,12 +55,12 @@ export class ProductAddComponent implements OnInit {
       this.productService
         .updateProduct(this.productId, productData)
         .subscribe(() => {
-          this.router.navigate(['/products']);
+          this.router.navigate(['/']);
         });
     } else {
       // ADD LOGIC (existing)
       this.productService.addProduct(productData).subscribe(() => {
-        this.router.navigate(['/products']);
+        this.router.navigate(['/']);
       });
     }
   }
