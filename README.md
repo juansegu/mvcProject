@@ -15,7 +15,15 @@ CD /API
 Run API
 
 ```bash
-$ dotnet run
+dotnet run
+```
+
+# API Unit Test
+
+Instal .net 9
+
+```bash
+dotnet test
 ```
 
 # ClientUIapp
